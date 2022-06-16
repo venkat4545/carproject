@@ -36,7 +36,7 @@ return rslt.getText();
 public static void main(String args[]) throws WriterException, IOException, NotFoundException  
 {  
 //path where the QR code is saved 
-  String j="saivenkat.png";;
+String j="saivenkat.png";
 String path = "E:\\qrcode\\"+j;  
 //Encoding charset to be used   
 String charset = "UTF-8";  

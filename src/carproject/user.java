@@ -9,6 +9,7 @@ package carproject;
  *
  * @author USER
  */
+
 class user {
     private String MODEL,NEOL,PRICE,NAME,CC;
     public user(String MODEL,String NEOL,String PRICE,String NAME,String CC){

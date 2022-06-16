@@ -5,6 +5,7 @@
  */
 package carproject;
 
+import static carproject.generateqr.generateQRcode;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
@@ -16,13 +17,31 @@ import javax.naming.spi.DirStateFactory.Result;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import java.io.File;  
+import java.io.IOException;  
+import java.util.HashMap;  
+import java.util.Map;  
+import com.google.zxing.BarcodeFormat;  
+import com.google.zxing.EncodeHintType;  
+import com.google.zxing.MultiFormatWriter;  
+import com.google.zxing.NotFoundException;  
+import com.google.zxing.WriterException;  
+import com.google.zxing.client.j2se.MatrixToImageWriter;  
+import com.google.zxing.common.BitMatrix;  
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author USER
  */
 public class login extends javax.swing.JFrame {
-
+public static void generateQRcode(String data, String path, String charset, Map map, int h, int w) throws WriterException, IOException  
+{  
+BitMatrix matrix = new MultiFormatWriter().encode(new String(data.getBytes(charset), charset), BarcodeFormat.QR_CODE, w, h);  
+MatrixToImageWriter.writeToFile(matrix, path.substring(path.lastIndexOf('.') + 1), new File(path));  
+}
     /**
      * Creates new form login
      */
@@ -132,8 +151,7 @@ public class login extends javax.swing.JFrame {
         String users=jTextField1.getText();
              String passes=jPasswordField1.getText();
              int log=1;
-Connection con =DriverManager.getConnection("jdbc:derby://localhost:1527/carproject","root","Nasusa9866@");
-             
+Connection con =DriverManager.getConnection("jdbc:derby://localhost:1527/carproject","root","Nasusa9866@");            
 String sql="select*from SIGNIN ";
           Statement st=  con.createStatement();
              ResultSet rs=st.executeQuery(sql);
@@ -149,11 +167,31 @@ String sql="select*from SIGNIN ";
              }
              if(log==0){
                  String user=jTextField1.getText();
+                 qrotp qr=new qrotp();
+                 qr.setVisible(true);
+                qr.jLabel1.setText(user);
+                 
                  
                  welcome w=new welcome();
-                     w.setVisible(true);
-                     w.username(user);
-                     try{
+                   //  w.setVisible(true);
+                     //w.username(user);
+                    
+
+String j=user+".png";
+String path = "E:\\qrcode\\"+j;   
+String charset = "UTF-8";  
+Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<EncodeHintType, ErrorCorrectionLevel>();   
+hashMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L); 
+try{
+generateQRcode(user, path, charset, hashMap, 200, 200);    
+System.out.println("QR Code created successfully.");
+}catch(WriterException e){
+    
+}           catch (IOException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+             
+ try{
         
          
 
@@ -184,7 +222,7 @@ JOptionPane.showMessageDialog(null,e);
              
 }catch(SQLException e)
 {
-JOptionPane.showMessageDialog(null,"invalid username or password");
+JOptionPane.showMessageDialog(null,e);
 }
     }//GEN-LAST:event_jButton1ActionPerformed
 

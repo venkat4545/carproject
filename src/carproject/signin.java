@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Random;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -121,6 +122,8 @@ return (new BigInteger(message)).modPow(d, N).toByteArray();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
@@ -131,10 +134,10 @@ return (new BigInteger(message)).modPow(d, N).toByteArray();
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 204));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Username:");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel1.setText("Email :");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(100, 80, 80, 30);
+        jLabel1.setBounds(140, 110, 80, 30);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,46 +145,46 @@ return (new BigInteger(message)).modPow(d, N).toByteArray();
             }
         });
         jPanel1.add(jTextField1);
-        jTextField1.setBounds(260, 80, 130, 30);
+        jTextField1.setBounds(260, 70, 210, 30);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 0));
         jLabel3.setText("password:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(100, 130, 70, 30);
+        jLabel3.setBounds(110, 160, 90, 30);
         jPanel1.add(jTextField2);
-        jTextField2.setBounds(260, 130, 130, 30);
+        jTextField2.setBounds(260, 160, 210, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 0));
         jLabel4.setText("phone number:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(80, 210, 110, 30);
+        jLabel4.setBounds(90, 250, 110, 30);
         jPanel1.add(jTextField3);
-        jTextField3.setBounds(260, 210, 130, 30);
+        jTextField3.setBounds(260, 250, 210, 30);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 0));
         jLabel5.setText("confirm password :");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(60, 170, 140, 30);
+        jLabel5.setBounds(70, 210, 140, 30);
         jPanel1.add(jPasswordField1);
-        jPasswordField1.setBounds(260, 170, 130, 30);
+        jPasswordField1.setBounds(260, 210, 210, 30);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 0));
         jLabel6.setText("address:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(120, 250, 60, 30);
+        jLabel6.setBounds(120, 370, 60, 30);
         jPanel1.add(jTextField4);
-        jTextField4.setBounds(260, 250, 200, 60);
+        jTextField4.setBounds(260, 350, 210, 60);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 0));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText(" Register  Here");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(120, 10, 230, 50);
+        jLabel7.setBounds(310, 10, 370, 60);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton1.setText("Register");
@@ -191,7 +194,7 @@ return (new BigInteger(message)).modPow(d, N).toByteArray();
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(280, 360, 100, 23);
+        jButton1.setBounds(540, 430, 150, 23);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setText("Login");
@@ -201,7 +204,7 @@ return (new BigInteger(message)).modPow(d, N).toByteArray();
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(470, 360, 67, 23);
+        jButton2.setBounds(320, 430, 140, 23);
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton3.setText("Reset all");
@@ -211,20 +214,28 @@ return (new BigInteger(message)).modPow(d, N).toByteArray();
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(130, 360, 90, 23);
+        jButton3.setBounds(60, 430, 150, 23);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 0));
         jLabel8.setText("Digital signaure :");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(420, 160, 110, 20);
+        jLabel8.setBounds(80, 310, 130, 20);
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel9.setText("Name :");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(140, 70, 50, 17);
+        jPanel1.add(jTextField6);
+        jTextField6.setBounds(260, 110, 210, 30);
         jPanel1.add(jTextField5);
-        jTextField5.setBounds(530, 160, 110, 30);
+        jTextField5.setBounds(260, 300, 210, 30);
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\USER\\Pictures\\photo-1528501028382-e587fcf3a03e.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/carproject/black.jpg"))); // NOI18N
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 0, 660, 430);
+        jLabel2.setBounds(0, 0, 730, 480);
 
         jButton4.setText("decrpt");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -239,11 +250,11 @@ return (new BigInteger(message)).modPow(d, N).toByteArray();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
         );
 
         pack();
@@ -255,11 +266,14 @@ return (new BigInteger(message)).modPow(d, N).toByteArray();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         String Users = jTextField1.getText();
+         
+         
         String Cpasses=jPasswordField1.getText();
         String Pass=jTextField2.getText();
         String Pno=jTextField3.getText();
         String Add=jTextField4.getText();
+        String name=jTextField1.getText();
+        String mm = jTextField6.getText();
 try
 {
     signin rsa = new signin(); 
@@ -268,7 +282,7 @@ try
              String enc=new String(numbe);
 //JOptionPane.showMessageDialog(null, "Encrypted sucessfully	"+bytesToString(en.getBytes()));
 encrypted= rsa.encrypt(en.getBytes());
-//	jTextField1.setText(bytesToString(en.getBytes())); 
+//jTextField1.setText(bytesToString(en.getBytes())); 
 //JOptionPane.showMessageDialog(null, "Encrypted sucessfully	"+encrypted);
 byte[] decrypted = rsa.decrypt(encrypted);
 bytesToString(decrypted); 
@@ -277,7 +291,7 @@ String S=new String(decrypted);
              
 Connection con =DriverManager.getConnection("jdbc:derby://localhost:1527/carproject","root","Nasusa9866@");
              
-String sql="insert into SIGNIN(USERNAME,PASSWORD,CONFIRMPASSWORD,PHONENUMB,ADDRESS,DSE,DSD) values('"+Users+"','"+Cpasses+"','"+Pass+"','"+Pno+"','"+Add+"','"+enc+"','"+S+"')";
+String sql="insert into SIGNIN(USERNAME,PASSWORD,CONFIRMPASSWORD,PHONENUMB,ADDRESS,DSE,DSD,MAILS) values('"+name+"','"+Cpasses+"','"+Pass+"','"+Pno+"','"+Add+"','"+enc+"','"+S+"','"+mm+"')";
           Statement st= (Statement) con.createStatement();
           
           
@@ -288,8 +302,11 @@ String sql="insert into SIGNIN(USERNAME,PASSWORD,CONFIRMPASSWORD,PHONENUMB,ADDRE
           
        login l=new login();
        l.setVisible(true);
+       
+            
+        }
              
-          }else{
+          else{
              
              JOptionPane.showMessageDialog(null,"both password and confirm password should be same");
           }
@@ -397,6 +414,7 @@ JOptionPane.showMessageDialog(null, e);
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
@@ -404,6 +422,7 @@ JOptionPane.showMessageDialog(null, e);
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 
     private String setValue(String string) {
